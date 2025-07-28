@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リーディング</title>
+    <link rel="icon" href="https://github.com/therapist-mii/spiritual/raw/main/images/favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* カスタムカラーとフォントの設定 */
+        :root {
+            --color-primary: #E4C1B5;
+            --color-secondary: #EAE6E1;
+            --color-text: #544C40;
+            --color-button-hover: #7a736a;
+            --color-white: #FFFFFF;
+            --color-step-bg: #f8f3f3;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background-color: var(--color-white);
+            color: var(--color-text);
+            line-height: 1.8; /* 行間を広く */
+            overflow-x: hidden; /* 横スクロールを防ぐ */
+        }
+
+        /* アニメーションの初期状態 */
+        .animate-fade-in {
+            opacity: 0;
+            transition: opacity 3s ease-out, transform 3s ease-out;
+        }
+
+        .animate-slide-up {
+            transform: translateY(50px);
+        }
+
+        .animate-slide-right {
+            transform: translateX(-50px);
+        }
+
+        .animate-slide-left {
+            transform: translateX(50px);
+        }
+
+        /* アニメーション後の状態 */
+        .animated {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* ボタンのスタイル */
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-text);
+            padding: 0.75rem 2rem;
+            border-radius: 9999px; /* 角丸 */
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-button-hover);
+            color: var(--color-white);
+        }
+
+        /* 画像のシャドウ */
+        .img-shadow {
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        /* タイトルのシャドウ */
+        .title-shadow {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        /* header.htmlに記述されているハンバーガーメニューのスタイル */
+        /* これらのスタイルはheader.htmlから読み込まれるため、ここでは重複を避けるためにコメントアウトしています */
+        /* 必要であれば、ここに直接記述することも可能です */
+        /*
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-primary);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 20;
+        }
+
+        .hamburger-menu.active {
+            display: flex;
+        }
+
+        .hamburger-menu a {
+            padding: 1rem;
+            text-align: center;
+            color: var(--color-text);
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hamburger-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .hamburger-menu a:hover {
+            background-color: var(--color-button-hover);
+            color: var(--color-white);
+        }
+        */
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- ヘッダーを挿入する場所 -->
+    <div id="header-placeholder"></div>
+
+    <!-- リーディングタイトルと背景画像 -->
+    <section class="relative h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+        <picture class="absolute inset-0 w-full h-full object-cover object-center">
+            <source media="(max-width: 767px)" srcset="https://github.com/therapist-mii/spiritual/raw/main/images/sea-hukan-mp.jpg">
+            <img src="https://github.com/therapist-mii/spiritual/raw/main/images/sea-hukan-pc.jpg" alt="神秘的な海の風景" class="w-full h-full object-cover object-center">
+        </picture>
+        <h1 class="relative text-white text-4xl md:text-6xl font-bold title-shadow z-10 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+            リーディング
+        </h1>
+    </section>
+
+    <!-- 魂の伴走者からの手紙 -->
+    <section class="container mx-auto px-4 py-16 md:py-24 text-center animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+        <div class="max-w-3xl mx-auto">
+            <img src="https://github.com/therapist-mii/spiritual/raw/main/images/letter-from.png" alt="魂の伴走者からの手紙" class="w-full max-w-lg mx-auto mb-8 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+            <!-- 追加された見出し -->
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+                魂の伴走者からの手紙
+            </h2>
+            <p class="text-xl md:text-2xl leading-relaxed animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+                守護霊様と相談をしながら<br>
+                あなたの魂があなたらしく輝けるよう<br>
+                いま必要なメッセージをお伝えします。<br>
+                迷いの中にあっても<br>
+                足元を照らしていけますように・・・
+            </p>
+        </div>
+    </section>
+
+    <!-- 翻訳 -->
+    <section class="container mx-auto px-4 py-16 md:py-24 text-center animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+        <img src="https://github.com/therapist-mii/spiritual/raw/main/images/honyaku.png" alt="翻訳" class="w-full max-w-lg mx-auto animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+    </section>
+
+    <!-- 人の目や、手描きの文字を入り口にして -->
+    <section class="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+        <div class="w-full md:w-1/2 flex justify-center animate-fade-in animate-slide-right" data-animation-type="fade-slide-right">
+            <picture class="img-shadow">
+                <source media="(max-width: 767px)" srcset="https://github.com/therapist-mii/spiritual/raw/main/images/kumo-mp.jpg">
+                <img src="https://github.com/therapist-mii/spiritual/raw/main/images/kumo-pc.jpg" alt="雲の画像" class="w-full max-w-md object-cover">
+            </picture>
+        </div>
+        <div class="w-full md:w-1/2 text-lg md:text-xl leading-relaxed animate-fade-in animate-slide-left" data-animation-type="fade-slide-left">
+            <p>
+                人の目や、手描きの文字を入り口にして<br>
+                魂の奥深くに触れていきます。<br>
+                言葉にならない感情や、未来の様子が<br>
+                映像や感覚として届いてきます。<br>
+                そのひとつひとつを、丁寧にその方にしっくりくる言葉に翻訳してお渡ししています。
+            </p>
+        </div>
+    </section>
+
+    <!-- リーディング詳細とこんな方におすすめ -->
+    <section class="container mx-auto px-4 py-8 md:py-16 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+        <img src="https://github.com/therapist-mii/spiritual/raw/main/images/menu_info.png" alt="メニュー情報" class="w-full max-w-lg mx-auto mb-4 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+
+        <div class="flex flex-col md:flex-row items-start justify-center gap-8 md:gap-16">
+            <div class="w-full md:w-1/2 text-lg md:text-xl leading-relaxed animate-fade-in animate-slide-right" data-animation-type="fade-slide-right">
+                <h3 class="font-bold text-2xl mb-4">▽ リーディング詳細</h3>
+                <p>
+                    セッション内容：霊視、守護霊様からのメッセージ、心理学<br>
+                    料金：<a href="https://therapist-mii.github.io/spiritual/reading-r.html" class="text-blue-600 hover:underline">無料お見積り</a>にてご確認ください<br>
+                    形式：遠隔<br>
+                    使用ツール：LINE<br>
+                    ご予約：霊視セッション日指定のみ（時間予約なし）<br>
+                    納期：セッション日から5営業日以内
+                </p>
+
+                <h3 class="font-bold text-2xl mt-8 mb-4">▽ こんな方におすすめ</h3>
+                <p>
+                    悩み事がある<br>
+                    守護霊様からのメッセージが欲しい<br>
+                    スピリチュアルな視点から、メッセージが欲しい
+                </p>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-center animate-fade-in animate-slide-left" data-animation-type="fade-slide-left">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="https://github.com/therapist-mii/spiritual/raw/main/images/sea-r-mp.jpg">
+                    <img src="https://github.com/therapist-mii/spiritual/raw/main/images/sea-r-pc.jpg" alt="海の画像" class="w-full max-w-md object-cover rounded-lg shadow-lg">
+                </picture>
+            </div>
+        </div>
+    </section>
+
+    <!-- お申込みの流れ -->
+    <section class="container mx-auto px-4 py-16 md:py-24 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+        <img src="https://github.com/therapist-mii/spiritual/raw/main/images/step.png" alt="ステップ" class="w-full max-w-lg mx-auto mb-8 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center animate-fade-in animate-slide-left" data-animation-type="fade-slide-left-h2">
+            【お申込みの流れ】
+        </h2>
+
+        <div class="space-y-8">
+            <!-- Step 1 -->
+            <div class="bg-[var(--color-step-bg)] p-6 md:p-8 rounded-lg shadow-md animate-fade-in animate-slide-right" data-animation-type="fade-slide-right-step">
+                <h3 class="text-2xl font-bold mb-4 text-[var(--color-primary)]">Step 1：フォームのご入力</h3>
+                <p class="text-lg leading-relaxed">
+                    このページ下部の専用フォームにご記入ください。<br>
+                    入力内容をもとに、お見積もりが自動で表示されます。
+                </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bg-[var(--color-step-bg)] p-6 md:p-8 rounded-lg shadow-md animate-fade-in animate-slide-right" data-animation-type="fade-slide-right-step">
+                <h3 class="text-2xl font-bold mb-4 text-[var(--color-primary)]">Step 2：LINEへのご連絡</h3>
+                <p class="text-lg leading-relaxed">
+                    表示されたお見積もりをご確認のうえ、<br>
+                    そのままLINEにコピー＆ペーストして送信してください。
+                </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="bg-[var(--color-step-bg)] p-6 md:p-8 rounded-lg shadow-md animate-fade-in animate-slide-right" data-animation-type="fade-slide-right-step">
+                <h3 class="text-2xl font-bold mb-4 text-[var(--color-primary)]">Step 3：ご提出いただくもの</h3>
+                <p class="text-lg leading-relaxed mb-4">
+                    お見積もりの送信後、以下をLINEにてお送りください。
+                </p>
+                <ul class="list-disc list-inside text-lg leading-relaxed mb-4">
+                    <li>目元の写真</li>
+                    <li>手書きのお名前</li>
+                    <li>手書きの相談のタイトル</li>
+                </ul>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <img src="https://github.com/therapist-mii/spiritual/raw/main/images/memoto.jpg" alt="目元の写真" class="w-full sm:w-1/2 max-w-xs rounded-lg shadow-md">
+                    <img src="https://github.com/therapist-mii/spiritual/raw/main/images/tegaki-r.jpg" alt="手書きの文字" class="w-full sm:w-1/2 max-w-xs rounded-lg shadow-md">
+                </div>
+                <p class="text-lg leading-relaxed mt-4">
+                    ご連絡を確認後、日程調整のご案内をお送りします。
+                </p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="bg-[var(--color-step-bg)] p-6 md:p-8 rounded-lg shadow-md animate-fade-in animate-slide-right" data-animation-type="fade-slide-right-step">
+                <h3 class="text-2xl font-bold mb-4 text-[var(--color-primary)]">Step 4：リーディングの実施とお届け</h3>
+                <p class="text-lg leading-relaxed">
+                    ご予約日に、遠隔でリーディングを行います。<br>
+                    セッション日から5営業日以内に、LINEにて結果をお届けいたします。
+                </p>
+            </div>
+
+            <!-- 無料お見積り＆ご予約はこちら (移動しました) -->
+            <div class="text-center mt-16 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+                <img src="https://github.com/therapist-mii/spiritual/raw/main/images/oaisurunowo.png" alt="お会いするのを楽しみにしております" class="w-full max-w-lg mx-auto mb-24 animate-fade-in animate-slide-up" data-animation-type="fade-slide"> <!-- mb-24 を追加 -->
+                <p class="text-2xl md:text-3xl font-bold mb-8 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+                    無料お見積り＆ご予約はこちら
+                </p>
+                <a href="https://therapist-mii.github.io/spiritual/reading-r.html" class="btn-primary inline-block animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+                    無料お見積り＆ご予約はこちら
+                </a>
+                <img src="https://github.com/therapist-mii/spiritual/raw/main/images/yoyaku_m.png" alt="ご予約" class="w-full max-w-lg mx-auto mt-8 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+            </div>
+        </div>
+    </section>
+
+    <!-- セッションについてのご案内 -->
+    <section class="container mx-auto px-4 py-16 md:py-24 text-center animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+        <div class="max-w-3xl mx-auto">
+            <h3 class="font-bold text-2xl md:text-3xl mb-8 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+                セッションについてのご案内
+            </h3>
+            <p class="text-lg md:text-xl leading-relaxed mb-8 animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+                このセッションは、現在のエネルギー状態に基づいた読み取りです。<br>
+                未来の出来事や結果を断定するものではありません。<br><br>
+                お届けする内容は、今のあなたの在り方から見えてくる流れやヒントです。<br>
+                お伝えした内容をヒントに、さらに良い未来を創っていただけましたら幸いです。
+            </p>
+            <img src="https://github.com/therapist-mii/spiritual/raw/main/images/ending_words.png" alt="感謝の言葉" class="w-full max-w-lg mx-auto animate-fade-in animate-slide-up" data-animation-type="fade-slide">
+        </div>
+    </section>
+
+    <!-- フッターを挿入する場所 -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // ヘッダーとフッターを読み込む関数
+        const loadExternalContent = async (placeholderId, url) => {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const text = await response.text();
+                document.getElementById(placeholderId).innerHTML = text;
+            } catch (error) {
+                console.error(`Failed to load ${url}:`, error);
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', async () => { // asyncキーワードを追加
+            // ヘッダーを読み込み、完了を待つ
+            await loadExternalContent('header-placeholder', 'https://therapist-mii.github.io/spiritual/header.html');
+
+            // ヘッダーがDOMに挿入された後にハンバーガーメニューのロジックを初期化
+            const hamburgerIcon = document.getElementById('hamburgerIcon');
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const overlay = document.getElementById('overlay');
+            // header.html内のサブメニューの親要素のaタグを取得
+            const hasSubmenuItems = document.querySelectorAll('#hamburgerMenu .has-submenu > a');
+
+            if (hamburgerIcon && hamburgerMenu && overlay) {
+                // ハンバーガーアイコンクリックでメニューを開閉
+                hamburgerIcon.addEventListener('click', function() {
+                    hamburgerIcon.classList.toggle('open');
+                    hamburgerMenu.classList.toggle('open');
+                    overlay.classList.toggle('open');
+                    document.body.style.overflow = hamburgerMenu.classList.contains('open') ? 'hidden' : ''; // メニューオープン時にスクロールを無効化
+                });
+
+                // オーバーレイクリックでメニューを閉じる
+                overlay.addEventListener('click', function() {
+                    hamburgerIcon.classList.remove('open');
+                    hamburgerMenu.classList.remove('open');
+                    overlay.classList.remove('open');
+                    document.body.style.overflow = ''; // スクロールを有効化
+                    // サブメニューも全て閉じる
+                    document.querySelectorAll('#hamburgerMenu .has-submenu.open').forEach(item => {
+                        item.classList.remove('open');
+                    });
+                });
+
+                // メニュー内のリンククリックでメニューを閉じる (サブメニューの親リンクは除く)
+                hamburgerMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function(event) {
+                        // サブメニューの親リンクでなければメニューを閉じる
+                        if (!this.parentElement.classList.contains('has-submenu')) {
+                            hamburgerIcon.classList.remove('open');
+                            hamburgerMenu.classList.remove('open');
+                            overlay.classList.remove('open');
+                            document.body.style.overflow = '';
+                            // サブメニューも全て閉じる
+                            document.querySelectorAll('#hamburgerMenu .has-submenu.open').forEach(item => {
+                                item.classList.remove('open');
+                            });
+                        }
+                    });
+                });
+
+                // サブメニューの開閉
+                hasSubmenuItems.forEach(item => {
+                    item.addEventListener('click', function(event) {
+                        event.preventDefault(); // 親リンクへの遷移を阻止
+                        const parentLi = this.parentElement;
+                        parentLi.classList.toggle('open');
+                    });
+                });
+            } else {
+                console.warn('Hamburger menu elements not found after header load. Please ensure header.html contains elements with id="hamburgerIcon", id="hamburgerMenu", and id="overlay".');
+            }
+
+            // フッターを読み込み (ヘッダーの後に実行)
+            await loadExternalContent('footer-placeholder', 'https://therapist-mii.github.io/spiritual/footer.html');
+
+            // Intersection Observerの設定
+            const observerOptions = {
+                root: null, // ビューポートをルートとする
+                rootMargin: '0px',
+                threshold: 0.1 // 要素の10%が見えたらコールバックを実行
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 要素がビューポートに入ったらアニメーションクラスを追加
+                        const element = entry.target;
+                        element.classList.add('animated');
+                        // 一度アニメーションしたら監視を停止
+                        observer.unobserve(element);
+                    }
+                });
+            }, observerOptions);
+
+            // アニメーション対象の要素を全て取得し、監視
+            document.querySelectorAll('[data-animation-type]').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
